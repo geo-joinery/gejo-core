@@ -12,7 +12,7 @@ runs:
       run: |
         cat > joinery.toml << EOF
         [geo-joinery]
-        name = "${{ inputs.joinery-name }}"
+        name = "${{ inputs.name }}"
         EOF
     - name: Commit config
       shell: bash
