@@ -7,15 +7,12 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Write package.json
+    - name: Write npm package configuration
       shell: bash
       run: |
         cp "${{ github.action_path }}/package.json" .
-        git add package.json
-    - name: Setup node
-      uses: actions/setup-node@v6
-      with:
-        cache: npm
+        npm install
+        git add package.json package-lock.json
     - name: Write update website workflow
       shell: bash
       env:
@@ -40,6 +37,5 @@ runs:
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
-        git add package-lock.json
         git commit -m "chore: initial setup"
         git push
