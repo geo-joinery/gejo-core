@@ -15,9 +15,12 @@ runs:
         git add package.json package-lock.json
     - name: Write MyST configuration
       shell: bash
+      env:
+        PAGES_ADDRESS: ${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
       run: |
         mkdir docs
         echo "n" | npx myst init --config docs/myst.yml
+        envsubst < "${{ github.action_path }}/README.md" > docs/README.md
         git add docs/myst.yml
     - name: Write geo-joinery configuration
       shell: bash
