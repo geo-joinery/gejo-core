@@ -5,7 +5,7 @@ runs:
   steps:
     - name: Set UV_PROJECT
       shell: bash
-      run: echo "UV_PROJECT=${{ github.action_path }}/../../../" >> $GITHUB_ENV
+      run: echo "UV_PROJECT=${{ github.action_path }}/../../.." >> $GITHUB_ENV
     - name: Setup python
       uses: actions/setup-python@v6
       with:
