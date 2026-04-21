@@ -4,4 +4,4 @@
 
 # gejo-core
 
-tooling for repositories generated from the geo-joinery/start template
+tooling for repositories generated from the [geo-joinery/start](../../../start) template
