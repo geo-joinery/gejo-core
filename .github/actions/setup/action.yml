@@ -18,7 +18,7 @@ runs:
       env:
         PAGES_ADDRESS: ${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
       run: |
-        mkdir docs
+        mkdir -p docs
         echo "n" | npx myst init --config docs/myst.yml
         envsubst < "${{ github.action_path }}/README.md" > docs/README.md
         git add docs/myst.yml docs/README.md
