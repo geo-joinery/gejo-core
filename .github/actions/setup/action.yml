@@ -13,13 +13,6 @@ runs:
         cp "${{ github.action_path }}/package.json" .
         npm install
         git add package.json package-lock.json
-    - name: Write update website workflow
-      shell: bash
-      env:
-        REPOSITORY_NAME: ${{ github.event.repository.name }}
-      run: |
-        envsubst < "${{ github.action_path }}/update-website.yml" > .github/workflows/update-website.yml
-        git add .github/workflows/update-website.yml
     - name: Write MyST configuration
       shell: bash
       run: |
