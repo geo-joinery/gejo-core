@@ -1,0 +1,22 @@
+name: Geo-joinery processing
+description: (Re)produce data processing steps as needed
+runs:
+  using: composite
+  steps:
+    - name: Set UV_PROJECT
+      shell: bash
+      run: echo "UV_PROJECT=${{ github.action_path }}/../../../" >> $GITHUB_ENV
+    - name: Setup python
+      uses: actions/setup-python@v6
+      working-directory: ${{ env.UV_PROJECT }}
+      with:
+        python-version-file: "pyproject.toml"
+    - name: Install uv
+      uses: astral-sh/setup-uv@v8
+      with:
+        enable-cache: true
+    - name: Install gejo-core
+      run: uv sync --locked
+    - name: Call gejo-core
+      shell: bash
+      run: uv run python -c "import gejo_core;exit(gejo_core.reproduce())"
