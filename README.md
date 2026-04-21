@@ -1,2 +1,7 @@
+> [!CAUTION]
+> We have only just started to get this project underway.
+> Check our [Announcements](https://github.com/orgs/geo-joinery/discussions/categories/announcements) for usability milestones!
+
 # gejo-core
-tools required by gejo-template
+
+tooling for repositories generated from the geo-joinery/start template
