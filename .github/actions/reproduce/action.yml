@@ -6,13 +6,10 @@ runs:
     - name: Set UV_PROJECT
       shell: bash
       run: echo "UV_PROJECT=${{ github.action_path }}/../../.." >> $GITHUB_ENV
-    - name: DEBUG
-      shell: bash
-      run: ls ${{ env.UV_PROJECT }}/
     - name: Setup python
       uses: actions/setup-python@v6
       with:
-        python-version-file: ${{ env.UV_PROJECT }}/pyproject.toml"
+        python-version-file: ${{ env.UV_PROJECT }}/pyproject.toml
     - name: Install uv
       uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
       with:
