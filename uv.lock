@@ -4,6 +4,7 @@ requires-python = ">=3.12"
 
 [[package]]
 name = "gejo-core"
+version = "0.1.0.dev1"
 source = { editable = "." }
 dependencies = [
     { name = "pystac" },

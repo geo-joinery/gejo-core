@@ -1,6 +1,6 @@
 [project]
 name = "gejo-core"
-dynamic = ["version"]
+version = "0.1.0.dev1"
 description = "workbench for JOIN operations on Earth science datasets"
 readme = "README.md"
 authors = [
@@ -11,9 +11,6 @@ dependencies = [
     "pystac>=1.14.3",
 ]
 
-[tool.hatch.version]
-source = "vcs"
-
 [build-system]
-requires = ["hatchling", "hatch-vcs"]
-build-backend = "hatchling.build"
+requires = ["uv_build>=0.11.7"]
+build-backend = "uv_build"
