@@ -21,7 +21,7 @@ runs:
         mkdir docs
         echo "n" | npx myst init --config docs/myst.yml
         envsubst < "${{ github.action_path }}/README.md" > docs/README.md
-        git add docs/myst.yml
+        git add docs/myst.yml docs/README.md
     - name: Write geo-joinery configuration
       shell: bash
       env:
