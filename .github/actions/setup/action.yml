@@ -23,6 +23,7 @@ runs:
     - name: Write MyST configuration
       shell: bash
       run: |
+        mkdir docs
         npx myst init --config docs/myst.yml
         git add docs/myst.yml
     - name: Write geo-joinery configuration
