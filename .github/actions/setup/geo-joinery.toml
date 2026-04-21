@@ -1,0 +1,7 @@
+[project]
+name = "${PROJECT_NAME}"
+maintainers = [
+  { username = "${GITHUB_ACTOR}" },
+]
+catalogs = [
+]

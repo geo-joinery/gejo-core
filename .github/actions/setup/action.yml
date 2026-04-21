@@ -1,0 +1,45 @@
+name: Geo-joinery setup
+description: Initialize a new geo-joinery in a GitHub hosted repository.
+inputs:
+  name:
+    description: The name of the joinery
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: Write package.json
+      shell: bash
+      run: |
+        cp "${{ github.action_path }}/package.json" .
+        git add package.json
+    - name: Setup node
+      uses: actions/setup-node@v6
+      with:
+        cache: npm
+    - name: Write update website workflow
+      shell: bash
+      with:
+        REPOSITORY_NAME: ${{ github.event.repository.name }}
+      run: |
+        envsubst < "${{ github.action_path }}/update-website.yml" > .github/workflows/update-website.yml
+        git add .github/workflows/update-website.yml
+    - name: Write MyST configuration
+      shell: bash
+      run: |
+        myst init --config docs/myst.yml
+        git add docs/myst.yml
+    - name: Write geo-joinery configuration
+      shell: bash
+      env:
+        PROJECT_NAME: ${{ inputs.name }}
+      run: |
+        envsubst < "${{ github.action_path }}/geo-joinery.toml" > geo-joinery.toml
+        git add geo-joinery.toml
+    - name: Commit configuration files
+      shell: bash
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add package-lock.json
+        git commit -m "chore: setup"
+        git push
