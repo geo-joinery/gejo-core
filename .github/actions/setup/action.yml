@@ -24,7 +24,7 @@ runs:
       shell: bash
       run: |
         mkdir docs
-        npx myst init --config docs/myst.yml
+        echo "n" | npx myst init --config docs/myst.yml
         git add docs/myst.yml
     - name: Write geo-joinery configuration
       shell: bash
