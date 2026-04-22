@@ -1,5 +1,5 @@
 name: Geo-joinery processing
-description: (Re)produce data processing steps as needed
+description: Run data processing steps as needed
 runs:
   using: composite
   steps:
@@ -18,7 +18,11 @@ runs:
           ${{ env.UV_PROJECT }}/uv.lock
     - name: Install gejo-core
       shell: bash
-      run: uv sync --locked
+      run: uv sync --frozen
+    - name: Install project package
+      if: ${{ hashFiles('pyproject.toml') != '' }}
+      shell: bash
+      run: uv pip install .
     - name: Call gejo-core
       shell: bash
       run: uv run python -c "import gejo_core;exit(gejo_core.reproduce())"
